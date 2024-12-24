@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConventerValut.MainPage"
+             xmlns:y="clr-namespace:ConventerValut"
+             x:DataType="y:ConventerValutViewModel">
+
+    <ScrollView>
+        <Grid ColumnDefinitions="3*, 7*" RowDefinitions="1*, 1*, 1*, 7*">
+            <DatePicker Date="{Binding DatePickerSelect}" Grid.Column="0" Grid.Row="0"></DatePicker>
+            <Grid Grid.Column="1" Grid.Row="0" ColumnDefinitions="1*, 1*, 1*, 1*, 1*">
+                <Button Grid.Column="2" Text="Перевести" Command="{Binding Convert}" CommandParameter="{Binding Source={x:Reference FirstValute}, Path=Text}"></Button>
+            </Grid>
+            <Picker Grid.Column="0" Grid.Row="1" SelectedItem="{Binding PickerSelect1}" ItemsSource="{Binding Valuti}" ItemDisplayBinding="{Binding CharCode}"></Picker>
+            <Picker Grid.Column="0" Grid.Row="2" SelectedItem="{Binding PickerSelect2}" ItemsSource="{Binding Valuti}" ItemDisplayBinding="{Binding CharCode}"></Picker>
+            <Entry Grid.Column="1" Grid.Row="1" x:Name="FirstValute" Text="{Binding EntryText}"></Entry>
+            <Entry Grid.Column="1" Grid.Row="2" x:Name="SecondValute" Text="{Binding LabelText}"></Entry>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
